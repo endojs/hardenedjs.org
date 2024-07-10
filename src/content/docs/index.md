@@ -18,8 +18,9 @@ hero:
       icon: external
 ---
 
-Hardened JavaScript is a mode for the JavaScript language for safe plugin
-systems and supply chain attack resistance.
+Hardened JavaScript is a [standards
+track](https://github.com/tc39/proposal-ses) mode for the JavaScript language
+for safe plugin systems and supply chain attack resistance.
 Hardening JavaScript improves a program’s integrity in the facy of
 adversarial code in the same process.
 
