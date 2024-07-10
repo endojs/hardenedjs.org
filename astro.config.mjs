@@ -6,6 +6,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Hardened JavaScript",
+      favicon: "/favicon.svg",
       // social: {
       // 	github: 'https://github.com/withastro/starlight',
       // },
