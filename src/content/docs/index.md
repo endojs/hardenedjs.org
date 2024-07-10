@@ -154,11 +154,13 @@ console.log(capability.inc()); // 2
   [Moddable](https://www.moddable.com/) uses Hardened JavaScript to
   confine programs on embedded devices.
 
-- [![MetaMask Logo](../../assets/metamask-x100.png)](https://metamask.io/)
+- [![LavaMoat Logo](../../assets/lavamoat-x100.png)](https://github.com/LavaMoat/LavaMoat)
   [MetaMask](https://metamask.io/) uses Hardened JavaScript to defend its
-  supply chain for its web extension, at build time and run time.
+  supply chain for its web extension, at build time and run time with
+  [LavaMoat](https://github.com/LavaMoat/LavaMoat).
 
-- [MetaMask](https://metamask.io/) also uses Hardened JavaScript to confine
+- [![MetaMask Logo](../../assets/metamask-x100.png)](https://metamask.io/)
+  [MetaMask](https://metamask.io/) also uses Hardened JavaScript to confine
   its [Snaps](https://metamask.io/snaps/) plugins.
 
 
