@@ -21,8 +21,8 @@ hero:
 Hardened JavaScript is a [standards
 track](https://github.com/tc39/proposal-ses) mode for the JavaScript language
 for safe plugin systems and supply chain attack resistance.
-Hardening JavaScript improves a program’s integrity in the facy of
-adversarial code in the same process.
+Hardening JavaScript improves a program’s integrity in the face of
+adversarial code in the same Realm.
 
 ## Mechanisms
 
@@ -113,7 +113,7 @@ lockdown();
 let counter = 0;
 const capability = harden({
   inc() {
-    counter++;
+    return counter++;
   },
 });
 
@@ -165,7 +165,7 @@ console.log(capability.inc()); // 2
 ## Boundaries
 
 Hardened JavaScript does not protect the availability of a program.
-Any party in the same realm, regardless of compartment isolation, can drop into
+Any party in the same agent, regardless of compartment isolation, can drop into
 an infinite loop and prevent all other parties from making progress.
 Hardened JavaScript combines well with carefully chosen process or worker
 boundaries.
@@ -175,7 +175,7 @@ timers and shared state between compartments.
 Each compartment’s global object has only certain _hardened, shared intrinsics_
 with other compartments, including `Object`, `Array`, `Date`, and `Math`, but
 lockdown ensures that `new Date()`, `Date.now()`, and `Math.random()` do not
-work.
+work in the locked down Realm.
 The compartment global object does not get any other properties from the host
 (web browser or Node.js) like `performance`.
 Without these features, a confined program can’t use timing side channels
