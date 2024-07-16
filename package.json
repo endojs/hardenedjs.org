@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "cp node_modules/ses/dist/ses.cjs public/ses.js && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.25.0",
     "astro": "^4.10.2",
+    "ses": "^1.5.0",
     "sharp": "^0.32.5"
   }
 }
