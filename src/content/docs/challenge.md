@@ -65,7 +65,7 @@ This includes sources of non-determinism like `window.setTimeout` and
 
 <div class="attacker-input">
   <b>Attacker Code:</b>
-    <textarea id="attacker-program" rows="10" cols="80" style="max-width: 100%" placeholder="(paste attack code here)">
+    <textarea id="attacker-program" rows="10" cols="80" placeholder="(paste attack code here)">
 function*() {
   guess('123456789A');
 }
