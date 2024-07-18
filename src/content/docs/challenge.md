@@ -6,7 +6,7 @@ description: Hardened JavaScript Escape Room
 <link rel="stylesheet" href="index.css">
 
 In this challenge, the defender has a secret
-[Macguffin](https://en.wikipedia.org/wiki/Macguffin"), in this case a random
+[Macguffin](https://en.wikipedia.org/wiki/Macguffin), in this case a random
 code which the attacker (below) is trying to guess.
 Everything is running inside a single, locked-down Hardened JavaScript realm.
 The attacker’s code (pasted into the text box) is evaluated by the defender in
