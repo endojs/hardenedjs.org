@@ -79,26 +79,15 @@ function on `globalThis`.
 ```js
 const c = new Compartment({
   globals: harden({ print }),
+  __options__: true,
 });
 
 c.evaluate(`print('Hello! Hello?');`);
 ```
 
-> **Compatibility:** XS and SES have not yet converged on the same signature
-> for the `Compartment` constructor.
-> XS supports the above pattern and until a future version, SES compartments
-> accept the globals as their first argument.
->
-> ```js
-> import 'ses';
-> 
-> const c = new Compartment({
->   print: harden(console.log),
-> });
-> 
-> c.evaluate(`print('Hello! Hello?');`);
-> ```
-
+> The `__options__` argument is a temporary accommodation for `ses`
+> compatibility starting with version 1.6.0 and intended to become unnecessary
+> in 2.0.0.
 
 ### Harden
 
