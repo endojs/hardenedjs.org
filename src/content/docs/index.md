@@ -4,7 +4,7 @@ description: What is Hardened JavaScript
 hero:
   tagline: What is Hardened JavaScript?
   image:
-    file: ../../assets/endo.png
+    file: ../../assets/hardened-javascript-logo.svg
   #   - text: Example Guide
   #     link: /guides/example/
   #     icon: right-arrow
