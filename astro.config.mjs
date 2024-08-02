@@ -7,6 +7,11 @@ export default defineConfig({
     starlight({
       title: "Hardened JavaScript",
       favicon: "/favicon.svg",
+      logo: {
+        src: "./src/assets/hardened-javascript-logotype.svg",
+        replacesTitle: true,
+      },
+      customCss: ["./src/custom.css"],
       // social: {
       // 	github: 'https://github.com/withastro/starlight',
       // },
