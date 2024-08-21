@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightBlog from "starlight-blog";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
         replacesTitle: true,
       },
       customCss: ["./src/custom.css"],
+      plugins: [starlightBlog()],
       // social: {
       // 	github: 'https://github.com/withastro/starlight',
       // },
