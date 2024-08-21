@@ -127,13 +127,13 @@ and code should begin migrating to prefer those forms.
 
   ```js
   // before:
-  import { StaticModuleRecord} from '@endo/static-module-record';
+  import { StaticModuleRecord } from '@endo/static-module-record';
   const compartment = new Compartment(
     {},
     {
       'my-module-specifier': new StaticModuleRecord(`
-      export default 42;
-    `),
+        export default 42;
+      `),
     },
   );
   console.log(compartment.importNow('my-module-specifier').default); // 42
@@ -141,14 +141,13 @@ and code should begin migrating to prefer those forms.
 
   ```js
   // after
-  import { ModuleSource} from '@endo/module-source';
   const compartment = new Compartment({
     __options__: true,
     modules: {
       'my-module-specifier': {
         source: new ModuleSource(`
-            export default 42;
-          `),
+          export default 42;
+        `),
       },
     },
   });
@@ -166,23 +165,31 @@ and code should begin migrating to prefer those forms.
 
   ```js
   // before:
-  const c1 = new Compartment({}, {
-    'c1-module-specifier': new StaticModuleRecord(`
-      export default 42;
-    `)
-  });
-  const c2 = new Compartment({}, {
-    'c2-module-specifier': c1.module('c1-module-specifier'),
-  });
+  const c1 = new Compartment(
+    {},
+    {
+      'c1-module-specifier': new StaticModuleRecord(`
+        export default 42;
+      `),
+    },
+  );
+  const c2 = new Compartment(
+    {},
+    {
+      'c2-module-specifier': c1.module('c1-module-specifier'),
+    },
+  );
+  console.log(c2.importNow('c2-module-specifier').default); // 42
   ```
 
   ```js
   // after
   const c1 = new Compartment({
+    __options__: true,
     modules: {
       'c1-module-specifier': new ModuleSource(`
         export default 42;
-      `)
+      `),
     },
   });
   const c2 = new Compartment({
@@ -194,6 +201,7 @@ and code should begin migrating to prefer those forms.
       },
     },
   });
+  console.log(c2.importNow('c2-module-specifier').default); // 42
   ```
 
   Module descriptors with the `source` key will construct a fresh instance
@@ -212,6 +220,12 @@ and code should begin migrating to prefer those forms.
   the initial, intrinsic `compartment.globalThis.Compartment`.
   The default compartment for `record` descriptors is child compartment.
 
+  Because you can otherwise only refer to a compartment with a reference
+  to that compartment, `source` and `namespace` descriptors that refer back to
+  their own compartment, instead of the default parent compartment, are not
+  expressible in the `modules` option and must move to a hook like
+  `moduleMapHook`, `importHook`, or `importNowHook`.
+
   ```js
   // before:
   const compartment = new Compartment(
@@ -220,12 +234,12 @@ and code should begin migrating to prefer those forms.
       'submodule/dependency': new StaticModuleRecord(`
         export default 42;
       `),
-      dependant: {
+      dependent: {
         record: new StaticModuleRecord(`
           import meaning from 'dependency';
           export default meaning;
         `),
-        specifier: 'submodule/depenant',
+        specifier: 'submodule/dependent',
       },
     },
     {
@@ -237,7 +251,7 @@ and code should begin migrating to prefer those forms.
       },
     },
   );
-  console.log(compartment.importNow('dependant').default); // 42
+  console.log(compartment.importNow('dependent').default); // 42
   ```
 
   ```js
@@ -248,13 +262,18 @@ and code should begin migrating to prefer those forms.
       'submodule/dependency': new ModuleSource(`
         export default 42;
       `),
-      dependant: {
-        record: new ModuleSource(`
-          import meaning from 'dependency';
-          export default meaning;
-        `),
-        specifier: 'submodule/depenant',
-      },
+    },
+    importNowHook(specifier) {
+      if (specifier === 'dependent') {
+        return {
+          source: new ModuleSource(`
+            import meaning from 'dependency';
+            export default meaning;
+          `),
+          specifier: 'submodule/dependent',
+          compartment, // reflexive
+        };
+      }
     },
     resolveHook(importSpecifier, referrerSpecifier) {
       const path = referrerSpecifier.split('/');
@@ -263,7 +282,7 @@ and code should begin migrating to prefer those forms.
       return path.join('/');
     },
   });
-  console.log(compartment.importNow('dependant').default); // 42
+  console.log(compartment.importNow('dependent').default); // 42
   ```
 
 Support for the deprecated forms will be removed in a future, major version.
