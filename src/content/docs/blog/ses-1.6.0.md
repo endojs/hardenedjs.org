@@ -1,5 +1,5 @@
 ---
-title: SES 1.6.0
+title: SES 1.6.0 improves compatibility with XS
 date: 2024-07-30
 slug: blog/ses-1.6.0
 ---
