@@ -9,7 +9,17 @@ The Embedded Challenge is a port of this site's [Web Challenge](https://hardened
 
 ## Running the Embedded Challenge
 
-To run the Embedded Challenge, you'll need a Moddable Six (or equivalent) and a computer (macOS, Windows, or Linux) with the Moddable SDK and ESP-IDF installed. From there, it is straightforward to build, install, and run:
+To run the Embedded Challenge, you'll need a Moddable Six (or equivalent) and a computer (macOS, Windows, or Linux) with the Moddable SDK and ESP-IDF installed. Use [xs-dev](https://xs-dev.js.org) to install the Moddable SDK with pre-built Moddable tool binaries:
+
+```
+> npm install -g xs-dev
+> xs-dev setup
+> xs-dev setup --device esp32
+```
+
+If you prefer to build the tools yourself, follow the directions to [install the Moddable SDK](https://moddable.com/documentation/Moddable%20SDK%20-%20Getting%20Started), build the tools, and [install the ESP-IDF](https://github.com/Moddable-OpenSource/moddable/blob/public/documentation/devices/esp32.md).
+
+Either way, from there it is straightforward to build, install, and run the Embedded Challenge:
 
 ```
 > cd $MODDABLE/contributed/challenge
@@ -48,7 +58,7 @@ The Embedded Challenge also runs on macOS, Windows, and Linux using the `mcsim`,
 
 ![mcsim](../../../assets/embedded-challenge-simulator.png)
 
-The application works exactly the same. However, BLE is unavailable so you cannot download your own attack scripts. You can edit the source code of built-in scripts, however, to try various attacks. While running in the simulator, the xsbug JavaScript debugger is available to debug your attacks and explore the runtime environment.
+The application works exactly the same. However, BLE is unavailable so you cannot download your own attack scripts. You can edit the source code of built-in scripts, however, to try various attacks. While running in the simulator, the [xsbug JavaScript debugger](https://moddable.com/documentation/xs/xsbug) is available to debug your attacks and explore the runtime environment.
 
 ## Hints for Attackers
 Because the Embedded Challenge is running on a different device with a different JavaScript engine, an attacker has different potential avenues of attack. For example,  XS implements ECMAScript 2024 with some engine-specific extensions plus the Hardened JavaScript APIs, so the attacker has a wide-array of language syntax and built-in APIs available to find a vulnerability to exploit. Also, because scripts are running on a resource constrained device with about 8.5 MB of RAM, it is easy to generate out of memory failures and to overflow both the native and JavaScript stacks. XS should successfully defend against these attacks by terminating execution. Limited memory also means that the garbage collector is likely to run more frequently, potentially making it easier to exploit any vulnerabilities it has or may trigger.
