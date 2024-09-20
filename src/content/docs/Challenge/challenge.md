@@ -1,9 +1,9 @@
 ---
-title: Challenge
+title: Web Challenge
 description: Hardened JavaScript Escape Room
 ---
 
-<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="../index.css">
 
 In this challenge, the defender has a secret
 [Macguffin](https://en.wikipedia.org/wiki/Macguffin), in this case a random
@@ -89,5 +89,5 @@ Try a sample attack! Each of these will  configure and execute a sample attack.
 
 Find this demo on [Github](https://github.com/endojs/hardenedjs.org/tree/main/public/challenge/index.js).
 
-<script src="/ses.js"></script>
-<script src="index.js"></script>
+<script src="../../ses.js"></script>
+<script src="./../index.js"></script>
