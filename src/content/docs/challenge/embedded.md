@@ -1,6 +1,7 @@
 ---
 title: Embedded Challenge
 description: Hardened JavaScript Escape Room on Embedded Hardware
+slug: challenge/embedded
 ---
 
 <link rel="stylesheet" href="../index.css">

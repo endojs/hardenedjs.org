@@ -1,6 +1,7 @@
 ---
 title: Web Challenge
 description: Hardened JavaScript Escape Room
+slug: challenge
 ---
 
 <link rel="stylesheet" href="../index.css">
