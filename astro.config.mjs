@@ -32,4 +32,8 @@ export default defineConfig({
       // ],
     }),
   ],
+  redirects: {
+    "/challenge/challenge": "/challenge",
+    "/challenge/challenge-embedded": "/challenge/embedded",
+  },
 });
