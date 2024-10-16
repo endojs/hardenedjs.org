@@ -17,19 +17,20 @@ export default defineConfig({
       // social: {
       // 	github: 'https://github.com/withastro/starlight',
       // },
-      // sidebar: [
-      // 	{
-      // 		label: 'Guides',
-      // 		items: [
-      // 			// Each item here is one entry in the navigation menu.
-      // 			{ label: 'Example Guide', slug: 'guides/example' },
-      // 		],
-      // 	},
-      // 	{
-      // 		label: 'Reference',
-      // 		autogenerate: { directory: 'reference' },
-      // 	},
-      // ],
+      sidebar: [
+        {
+          label: "Challenge",
+          autogenerate: { directory: "challenge" },
+        },
+        {
+          label: "Console",
+          slug: "console",
+        },
+        {
+          label: "Blog",
+          autogenerate: { directory: "blog" },
+        },
+      ],
     }),
   ],
   redirects: {
