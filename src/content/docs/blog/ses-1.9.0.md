@@ -1,10 +1,10 @@
 ---
-title: SES 1.8.0 introduces immutable ArrayBuffers
+title: SES 1.9.0 introduces immutable ArrayBuffers
 date: 2024-10-10
 slug: blog/ses-1.9.0
 ---
 
-SES 1.8.0 introduces immutable `ArrayBuffer`, exposes its `console` shim, and permits
+SES 1.9.0 introduces immutable `ArrayBuffer`, exposes its `console` shim, and permits
 a global `ModuleSource` in the shared intrinsics.
 
 ### Immutable ArrayBuffer
@@ -16,12 +16,12 @@ October plenary meeting of the JavaScript standard committee, ECMA TC39.
 The committee adopted Immutable Array Buffers into the body of problems under
 consideration for a solution in a future standard, called "Stage 1".
 
-SES 1.8.0 is the first release to introduce an emulation of the proposed
+SES 1.9.0 is the first release to introduce an emulation of the proposed
 immutable ArrayBuffer.
 
 On platforms without
 [`Array.prototype.transfer`](https://github.com/tc39/proposal-resizablearraybuffer)
-but with a global `structuredClone`, the ses-shim's `lockdown` will now install
+but with a global `structuredClone`, the `ses` shim's `lockdown` will now install
 an emulation of `Array.prototype.transfer`.
 On platforms with neither, `ses` will *currently* not install such an
 emulation.
