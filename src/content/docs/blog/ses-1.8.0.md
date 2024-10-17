@@ -22,10 +22,21 @@ However, in the few cases where a dependency on versions 0.10.5 to 0.13.7 of
 misalignment of the global objects the runtime introduces and the environment
 that Hardened JavaScript expects from the base language.
 
+With SES 1.8.0, `lockdown` accepts a new option
+`legacyRegeneratorRuntimeTaming: 'unsafe-ignore'` that repairs the intrinsics
+shared by all compartments so that `lockdown` will allow them.
+This remediation is not strictly safe because it converts
+`Iterator.prototype[Symbol.iterator]` to a getter and setter, such that all
+assignments to it are ignored.
+This could cause code to procede on false assumption that it successfully
+overwrote the `Iterator.prototype[Symbol.iterator]` instead of throwing an
+error.
+
 ### Error Trapping: Report
 
-Starting with SES 1.8.0, the `'report'` mode for `errorTrapping` will write
-errors to standard error with the new `SES_UNCAUGHT_EXCEPTION: ` prefix.
+Starting with SES 1.8.0, the `'report'` mode for the `errorTrapping` option to
+`lockdown` will write errors to standard error with the new
+`"SES_UNCAUGHT_EXCEPTION: "` prefix.
 The `'report'` mode is sometimes implied by `'platform'`, `'exit'`, or `'abort'`.
 This is intended to give valuable context to users of the system, especially
 when an uncaught exception is not an `Error` object, and therefore its origin

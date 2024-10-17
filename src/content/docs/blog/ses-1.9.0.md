@@ -9,6 +9,11 @@ a global `ModuleSource` in the shared intrinsics.
 
 ### Immutable ArrayBuffer
 
+JavaScript strings are immutable, but JavaScript lacks an immutable analog for
+ArrayBuffer.
+So, one can have a string of text and send it without making a copy to defend
+its invariance, but not a string of bytes.
+
 Agoric's [Mark Miller](https://agoric.com/team/)
 [presented](https://www.youtube.com/watch?v=CP_5Yo9h84k) a
 [proposal](https://github.com/tc39/proposal-immutable-arraybuffer) at the
