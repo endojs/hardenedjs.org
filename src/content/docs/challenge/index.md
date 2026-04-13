@@ -90,5 +90,7 @@ Try a sample attack! Each of these will  configure and execute a sample attack.
 
 Find this demo on [Github](https://github.com/endojs/hardenedjs.org/tree/main/public/challenge/index.js).
 
+Caveats at [Beyond the Challenge page](https://github.com/endojs/hardenedjs.org/tree/main/public/challenge/other-non-overt-channels.md).
+
 <script src="../ses.js"></script>
 <script src="index.js"></script>
