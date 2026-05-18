@@ -1,5 +1,10 @@
-# Non-overt (side and covert) Channels beyond the Challenge page
-Dynamic and static sources of non-determinism in JavaScript
+---
+title: Side and Covert Channels
+description: Dynamic and static sources of non-determinism in JavaScript
+slug: other-non-overt-channels
+---
+
+### Non-overt (side and covert) Channels beyond the Challenge page: Dynamic and static sources of non-determinism in JavaScript
 
 See "A Taxonomy of Security Issues" section [Overt, Side, and Covert Channels
 ](https://papers.agoric.com/taxonomy-of-security-issues/#overt-side-and-covert-channels)
